@@ -1,0 +1,245 @@
+body {
+    margin: 0;
+    font-family: 'Roboto', Arial, sans-serif;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+#banner {
+    background: #003087;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+#banner h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    position: absolute;
+    left: 10px;
+}
+
+#content {
+    display: flex;
+    flex: 1;
+    height: calc(100vh - 60px);
+}
+
+#sidebar {
+    width: 300px;
+    background: #f5f5f5;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+    z-index: 999;
+}
+
+#map {
+    flex: 1;
+    height: 100%;
+}
+
+.nav-section {
+    margin-bottom: 20px;
+}
+
+.nav-section h2 {
+    font-size: 18px;
+    margin: 0 0 10px;
+    color: #333;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+#start-search, #dest-search, #single-search {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+#get-location-btn {
+    width: 100%;
+    padding: 6px;
+    margin-top: 5px;
+    background: #003087;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#get-location-btn:hover {
+    background: #00205b;
+}
+
+button {
+    width: 100%;
+    padding: 8px;
+    background: #003087;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+button:hover {
+    background: #00205b;
+}
+
+.suggestions {
+    position: absolute;
+    background: white;
+    border: 1px solid #ccc;
+    max-height: 150px;
+    overflow-y: auto;
+    width: 100%;
+    display: none;
+    z-index: 1001;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.suggestions div {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.suggestions div:hover {
+    background: #e0e0e0;
+}
+
+#start-suggestions { top: 65px; }
+#dest-suggestions { top: 35px; }
+#single-suggestions { top: 35px; }
+
+#result {
+    font-size: 14px;
+    color: #333;
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* Popup styling */
+.leaflet-popup-content-wrapper {
+    padding: 0;
+    border-radius: 5px;
+}
+
+.popup-card {
+    width: 300px;
+    padding: 10px;
+}
+
+.popup-card h3 {
+    margin: 0 0 10px;
+    font-size: 16px;
+}
+
+.slider {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.slider img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.slider img.active {
+    opacity: 1;
+}
+
+/* Label styling */
+.location-label {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    white-space: nowrap;
+    border: 1px solid #ccc;
+}
+
+/* Animated line styling */
+.animated-line {
+    stroke: #003087;
+    stroke-width: 4;
+    stroke-dasharray: 10;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .menu-btn {
+        display: block;
+    }
+
+    #sidebar {
+        position: fixed;
+        top: 60px;
+        left: 0;
+        height: calc(100vh - 60px);
+        transform: translateX(-100%);
+    }
+
+    #sidebar.sidebar-visible {
+        transform: translateX(0);
+    }
+
+    #content {
+        flex-direction: column;
+    }
+
+    #map {
+        width: 100%;
+        height: 100%;
+    }
+
+    #banner h1 {
+        font-size: 20px;
+    }
+
+    .popup-card {
+        width: 250px;
+    }
+
+    .location-label {
+        font-size: 10px;
+        padding: 1px 3px;
+    }
+}
